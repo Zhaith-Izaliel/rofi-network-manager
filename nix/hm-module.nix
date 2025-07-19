@@ -27,7 +27,7 @@ in {
     theme = mkOption {
       type = rofiHelpers.themeType;
       default = null;
-      description = "Define the theme config of the applet";
+      description = "Define the theme using rofi rasi. See https://nix-community.github.io/home-manager/options.xhtml#opt-programs.rofi.theme";
     };
 
     languages = mkOption {
@@ -36,7 +36,7 @@ in {
       description = ''
         The path to a directory containing languages file for ronema.
 
-        The directory should contain at least the language defined in `programs.rofi.applets.ronema.settings.language`
+        The directory should contain at least the language defined in `programs.ronema.settings.language`
 
         See: https://github.com/P3rf/rofi-network-manager/blob/master/src/languages/lang_file.example to learn how to make language files for ronema.
       '';
@@ -48,7 +48,7 @@ in {
       description = ''
         The path to a directory containing icons for ronema.
 
-        The directory should contain the following icons in the same names and formats:
+        The directory must contain the following icons in the same names and formats:
         - `alert.svg`
         - `change.svg`
         - `restart.svg`
@@ -68,7 +68,7 @@ in {
         default = 0;
         description = ''
           Location:
-          +---------- +
+          +-----------+
           | 1 | 2 | 3 |
           | 8 | 0 | 4 |
           | 7 | 6 | 5 |
@@ -101,9 +101,15 @@ in {
       };
 
       notifications = mkOption {
-        type = types.enum ["true" "false"];
-        default = "false";
+        type = types.bool;
+        default = false;
         description = "Use notifications or not.";
+      };
+
+      notifications_icons = mkOption {
+        type = types.bool;
+        default = false;
+        description = "Use notifications icons or not.";
       };
 
       qrcode_dir = mkOption {
