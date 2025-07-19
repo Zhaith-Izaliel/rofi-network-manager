@@ -79,6 +79,8 @@ in rec {
     str
   );
 
+  primitive = with types; (oneOf [str int bool rasiLiteral]);
+
   themeType = with types; nullOr (attrsOf configType);
 
   rasiLiteral =
