@@ -3,9 +3,9 @@
   lib,
   ...
 }: let
-  inherit (lib) mkIf mkOption mkEnableOption types optionalString;
+  inherit (lib) mkIf mkOption mkEnableOption types;
   cfg = config.programs.ronema;
-  rofiHelpers = import ../utils {inherit lib;};
+  rofiHelpers = import ./utils.nix {inherit lib;};
   mkSignalStrength = default:
     mkOption {
       inherit default;
