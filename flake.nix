@@ -54,10 +54,10 @@
           };
         };
 
-        overlays.default = {pkgs, ...}: let
-          packages = withSystem pkgs.stdenv.hostPlatform.system ({config, ...}: config.packages);
+        overlays.default = {...}: let
+          packages = pkgs': withSystem pkgs'.stdenv.hostPlatform.system ({config, ...}: config.packages);
         in
-          final: prev: {ronema = packages.ronema;};
+          final: prev: {ronema = (packages prev).ronema;};
       };
     });
 }
