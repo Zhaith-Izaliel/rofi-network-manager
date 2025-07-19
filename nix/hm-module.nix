@@ -4,7 +4,7 @@
   ...
 }: let
   inherit (lib) mkIf mkOption mkEnableOption types optionalString;
-  cfg = config.programs.rofi.applets.ronema;
+  cfg = config.programs.ronema;
   rofiHelpers = import ../utils {inherit lib;};
   mkSignalStrength = default:
     mkOption {
@@ -15,7 +15,7 @@
   locationType = types.enum [0 1 2 3 4 5 6 7 8];
   generatedThemeName = "hm-theme.rasi";
 in {
-  options.programs.rofi.applets.ronema = {
+  options.programs.ronema = {
     enable = mkEnableOption "Rofi NetworkManager applet";
 
     package = mkOption {
