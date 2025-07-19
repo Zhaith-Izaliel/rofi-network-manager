@@ -190,9 +190,7 @@ in {
     home.packages = [cfg.package];
 
     xdg.configFile = {
-      "ronema/themes/${generatedThemeName}".text =
-        optionalString (cfg.theme != null)
-        (rofiHelpers.toRasi cfg.theme);
+      "ronema/themes/${generatedThemeName}".text = mkIf (cfg.theme != null) (rofiHelpers.toRasi cfg.theme);
       "ronema/ronema.conf".text = rofiHelpers.toConf cfg.settings;
       "ronema/icons".source = cfg.icons;
       "ronema/languages".source = cfg.languages;

@@ -46,7 +46,7 @@
           };
 
           ronema = {pkgs, ...}: let
-            hm-module = import ./ronema/hm-module.nix {
+            hm-module = import ./nix/hm-module.nix {
               package = withSystem pkgs.stdenv.hostPlatform.system ({config, ...}: config.packages.ronema);
             };
           in {
