@@ -3,7 +3,6 @@
   version ? "git",
   src,
   rofi,
-  rofi-wayland,
   makeWrapper,
   libnotify,
   qrencode,
@@ -11,26 +10,20 @@
   networkmanagerapplet,
   bash,
   lib,
-  useWayland ? true,
 }: let
-  paths =
-    [
-      libnotify
-      qrencode
-      networkmanagerapplet
-      networkmanager
-    ]
-    ++ (
-      if useWayland
-      then [rofi-wayland]
-      else [rofi]
-    );
+  paths = [
+    libnotify
+    qrencode
+    networkmanagerapplet
+    networkmanager
+    rofi
+  ];
   wrapperPath = lib.makeBinPath paths;
 in
   stdenvNoCC.mkDerivation rec {
     pname = "ronema";
 
-    inherit version src useWayland;
+    inherit version src;
 
     buildInputs = [
       bash
